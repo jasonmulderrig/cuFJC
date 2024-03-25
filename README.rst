@@ -36,7 +36,7 @@ Information
 Citation
 ********
 
-.. \Jason Mulderrig, Brandon Talamini, and Nikolaos Bouklas, ``cufjc``: the Python package for the composite uFJC model, `Zenodo (2024) <https://doi.org/10.5281/zenodo.7335564>`_.
+\Jason Mulderrig, Brandon Talamini, and Nikolaos Bouklas, ``cufjc``: the Python package for the composite uFJC (cuFJC) model, `Zenodo (2024) <https://doi.org/10.5281/zenodo.10871017>`_.
 
 \Jason Mulderrig, Brandon Talamini, and Nikolaos Bouklas, A statistical mechanics framework for polymer chain scission, based on the concepts of distorted bond potential and asymptotic matching, `Journal of the Mechanics and Physics of Solids 174, 105244 (2023) <https://www.sciencedirect.com/science/article/pii/S0022509623000480>`_.
 
@@ -55,4 +55,5 @@ Citation
 .. |license| image:: https://img.shields.io/github/license/jasonmulderrig/cuFJC?label=License
     :target: https://github.com/jasonmulderrig/cuFJC/LICENSE
 
-.. zenodo badge
+.. |zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.10871017.svg
+   :target: https://doi.org/10.5281/zenodo.10871017
