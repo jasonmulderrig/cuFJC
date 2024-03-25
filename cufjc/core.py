@@ -1,4 +1,4 @@
-"""The core single-chain module for the composite uFJC model."""
+"""The core single-chain module for the cuFJC model."""
 
 # Import external modules
 from __future__ import division
@@ -6,17 +6,17 @@ import sys
 import numpy as np
 
 
-class CompositeuFJC(object):
-    """The composite uFJC single-chain model class.
+class cuFJC(object):
+    """The cuFJC single-chain model class.
     
     This class contains methods specifying the core functions and
-    parameters underpinning the composite uFJC single-chain model
-    independent of scission.
+    parameters underpinning the cuFJC single-chain model independent of
+    scission.
     """
     def __init__(self, **kwargs):
         """
-        Initializes the ``CompositeuFJC`` class, producing a composite
-        uFJC single chain model instance.
+        Initializes the ``cuFJC`` class, producing a cuFJC single chain
+        model instance.
         """
         # Define and store numerical tolerance parameters
         min_exponent = np.log(sys.float_info.min) / np.log(10)
@@ -41,30 +41,30 @@ class CompositeuFJC(object):
         # Calculate segment-level parameters from provided bond-level
         # parameters if necessary
         if nu is None:
-            sys.exit('Error: Need to specify nu in the composite uFJC.')
+            sys.exit('Error: Need to specify nu in the cuFJC.')
         elif nu_b is None:
             if zeta_nu_char is None:
                 error_message = """\
-                    Error: Need to specify zeta_nu_char in the composite uFJC \
+                    Error: Need to specify zeta_nu_char in the cuFJC \
                     when nu_b is not specified.
                     """
                 sys.exit(error_message)
             elif kappa_nu is None:
                 error_message = """\
-                    Error: Need to specify kappa_nu in the composite uFJC \
-                    when nu_b is not specified. \
+                    Error: Need to specify kappa_nu in the cuFJC when \
+                    nu_b is not specified. \
                     """
                 sys.exit(error_message)
         elif nu_b is not None:
             if zeta_b_char is None:
                 error_message = """\
-                    Error: Need to specify zeta_b_char in the composite uFJC \
+                    Error: Need to specify zeta_b_char in the cuFJC \
                     when nu_b is specified. \
                     """
                 sys.exit(error_message)
             elif kappa_b is None:
                 error_message = """\
-                    Error: Need to specify kappa_b in the composite uFJC when \
+                    Error: Need to specify kappa_b in the cuFJC when \
                     nu_b is specified
                     """
                 sys.exit(error_message)
@@ -119,10 +119,10 @@ class CompositeuFJC(object):
         return -self.zeta_nu_char**2 / (2.*self.kappa_nu*(lmbda_nu-1.)**2)
     
     def u_nu_func(self, lmbda_nu):
-        """Nondimensional composite uFJC segment potential energy.
+        """Nondimensional cuFJC segment potential energy.
         
-        This function computes the nondimensional composite uFJC 
-        segment potential energy as a function of the segment stretch.
+        This function computes the nondimensional cuFJC segment
+        potential energy as a function of the segment stretch.
         """
         if lmbda_nu <= self.lmbda_nu_crit:
             return self.u_nu_subcrit_func(lmbda_nu)
@@ -131,23 +131,22 @@ class CompositeuFJC(object):
             return self.u_nu_supercrit_func(lmbda_nu)
     
     def u_nu_analytical_func(self, lmbda_nu_hat):
-        """Analytical form of the nondimensional composite uFJC segment
-        potential energy.
+        """Analytical form of the nondimensional cuFJC segment potential
+        energy.
         
-        This function computes the nondimensional composite uFJC segment
+        This function computes the nondimensional cuFJC segment
         potential energy as a function of the applied segment stretch.
         """
         return self.u_nu_func(lmbda_nu_hat)
     
     def u_nu_prime_analytical_func(self, lmbda_nu_hat):
         """Analytical form of the derivative of the nondimensional
-        composite uFJC segment potential energy taken with respect to
-        the applied segment stretch.
+        cuFJC segment potential energy taken with respect to the applied
+        segment stretch.
         
         This function computes the derivative of the nondimensional
-        composite uFJC segment potential energy taken with respect to
-        the applied segment stretch as a function of applied segment
-        stretch.
+        cuFJC segment potential energy taken with respect to the applied
+        segment stretch as a function of applied segment stretch.
         """
         if lmbda_nu_hat <= self.lmbda_nu_crit:
             return self.kappa_nu * (lmbda_nu_hat-1.)
